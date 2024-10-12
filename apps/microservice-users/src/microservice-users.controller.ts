@@ -19,4 +19,18 @@ export class MicroserviceUsersController {
 
     return this.microserviceUsersService.findAllUsers()
   }
+
+  @MessagePattern('find_userid')
+  findUserId(@Payload() {id}: {id: number}, @Ctx() context: NatsContext){
+    console.log(context);
+
+    return this.microserviceUsersService.findUserById(id);
+  }
+
+  @MessagePattern('create_user')
+  createUser(@Payload() {name, contact, age, email}: {name: string, contact: string, age: number, email: string}, @Ctx() context: NatsContext){
+    console.log(context);
+    
+    return this.microserviceUsersService.createUser(name, contact, age, email);
+  }
 }

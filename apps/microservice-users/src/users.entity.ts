@@ -6,10 +6,10 @@ export class Users{
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({length: 50, type: "text"})
+    @Column({type: "varchar", length: 50})
     name: string;
 
-    @Column({type: 'text', length: 13})
+    @Column({type: 'varchar', length: 13})
     contact: string;
 
     @Column({type: 'int'})

@@ -10,4 +10,12 @@ export class UsersService {
     returnAllUsers(){
         return this.client.send('find_users', {});
     }
+
+    returnUserById(id: number){
+        return this.client.send('find_userid', {id});
+    }
+
+    registerUser(name: string, contact: string, age: number, email: string){
+        return this.client.send('create_user', {name, contact, age, email});
+    }
 }
