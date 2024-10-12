@@ -12,4 +12,11 @@ export class MicroserviceUsersController {
     
     return 'ready service'
   }
+
+  @MessagePattern('find_users')
+  findAllUsers(@Payload() data, @Ctx() context: NatsContext){
+    console.log(context);
+
+    return this.microserviceUsersService.findAllUsers()
+  }
 }
